@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite ./client",
     "build": "cd client && tsc && vite build --emptyOutDir --outDir ../dist",
-    "preview": "vite preview",
+    "preview": "vite preview --outDir ./dist",
     "start": "node server.js"
   },
   "dependencies": {
