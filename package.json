@@ -2,13 +2,15 @@
   "name": "youtube-search-lit",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "cd client && tsc && vite build --emptyOutDir --outDir ../dist",
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
+    "@fastify/static": "^6.12.0",
+    "fastify": "^4.24.3",
     "lit": "^3.0.2"
   },
   "devDependencies": {
