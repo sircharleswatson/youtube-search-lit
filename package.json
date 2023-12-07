@@ -12,10 +12,12 @@
     "@fastify/env": "^4.3.0",
     "@fastify/leveldb": "^5.1.0",
     "@fastify/static": "^6.12.0",
+    "@lit/task": "^1.0.0",
     "axios": "^1.6.2",
     "crypto": "^1.0.1",
     "fastify": "^4.24.3",
-    "lit": "^3.0.2"
+    "lit": "^3.0.2",
+    "router-slot": "^1.5.5"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.2",
