@@ -2,7 +2,7 @@ import { Task } from "@lit/task"
 import { LitElement, css, html } from "lit"
 import { customElement, state } from "lit/decorators.js"
 import { queryString } from "router-slot"
-import axios, { AxiosError } from "axios"
+import axios from "axios"
 
 import "./components/video-list"
 import "./components/video-filter"
