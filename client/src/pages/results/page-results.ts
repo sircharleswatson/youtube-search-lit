@@ -2,7 +2,7 @@ import { Task } from "@lit/task"
 import { LitElement, css, html } from "lit"
 import { customElement, state } from "lit/decorators.js"
 import { queryString } from "router-slot"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 
 import "./components/video-list"
 import "./components/video-filter"
@@ -25,8 +25,8 @@ export class SearchResults extends LitElement {
           { signal }
         )
         return response.data
-      } catch (e) {
-        throw new Error(e) 
+      } catch (e: unknown) {
+        throw new Error(e as string) 
       }
     },
     args: () => [this.term, this.order]

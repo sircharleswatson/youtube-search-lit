@@ -12,8 +12,8 @@ export class Home extends LitElement {
       try {
         const response = await axios.post(import.meta.env.VITE_API_URL + "/search", { term }, { signal })
         return response.data
-      } catch (e) {
-        throw new Error(e) 
+      } catch (e: unknown) {
+        throw new Error(e as string) 
       }
     },
     args: () => ["lit.dev"]
