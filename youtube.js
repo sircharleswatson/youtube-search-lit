@@ -6,12 +6,9 @@ const crypto = require("crypto")
  */
 
 async function search(term, order = "relevance", { context }) {
-  console.log("TERM", term)
-  console.log("ORDER", order)
   const cachedResults = await searchCache(term, order, { context })
 
   if (cachedResults) {
-    console.log("USING CACHE")
     return cachedResults
   }
 
@@ -24,7 +21,6 @@ async function search(term, order = "relevance", { context }) {
 
 async function searchCache(term, order, { context }) {
   const searchKey = hashSearchArgs(term, order)
-  console.log(searchKey)
   try {
     return JSON.parse(await context.level.db.get(searchKey))
   } catch (e) {
@@ -33,7 +29,6 @@ async function searchCache(term, order, { context }) {
 }
 
 async function searchYoutube(term, order, { context }) {
-  console.log("SEARCHING YOUTUBE")
   const queryString = getQueryString({
     key: process.env.YOUTUBE_API_KEY,
     q: term,
@@ -57,7 +52,6 @@ async function enrichVideos(videos) {
 
 async function cacheVideos(term, order, videos, { context }) {
   const searchKey = hashSearchArgs(term, order)
-  console.log(searchKey)
 
   await context.level.db.put(searchKey, JSON.stringify(videos))
 }
@@ -103,7 +97,6 @@ async function getVideoDetails(ids) {
 
 function getQueryString(params) {
   const queryString = `?${new URLSearchParams(params).toString()}`
-  console.log("QUERY STRING: ", queryString)
   return queryString
 }
 
