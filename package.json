@@ -9,7 +9,11 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@fastify/env": "^4.3.0",
+    "@fastify/leveldb": "^5.1.0",
     "@fastify/static": "^6.12.0",
+    "axios": "^1.6.2",
+    "crypto": "^1.0.1",
     "fastify": "^4.24.3",
     "lit": "^3.0.2"
   },
