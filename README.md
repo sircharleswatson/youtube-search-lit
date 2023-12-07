@@ -1,10 +1,11 @@
-# Youtube Search App
+# Youtube Search App 
 
+### [Live Demo](https://youtube-search-jngt.onrender.com/)
+
+## Goal
 The goal of this project is to implement Youtube's Data API in a SPA providing a UI for interacting the search endpoint.
 
 The app should use Web Components, in this case: [Lit.dev](https://lit.dev)
-
-#### [Live Demo](https://youtube-search-jngt.onrender.com/)
 
 ### Requirements
 
@@ -41,7 +42,7 @@ Copy those both to a new `.env` file, keeping them in their respective locations
 
 For the `YOUTUBE_API_KEY` you will need to follow the instructions [here](https://developers.google.com/youtube/v3/getting-started#before-you-start) to create a new API key.
 
-_Note: It's recommended to scope down the key as much as possible. Only allow access to Youtube, and only allow access to specific IPs or Domains_
+> _Note: It's recommended to scope down the key as much as possible. Only allow access to Youtube, and only allow access to specific IPs or Domains_
 
 
 **Start the client:**
@@ -109,7 +110,7 @@ I went back and forth on the design a bit because I wasn't anticipating setting 
 
 Ultimately though, I opted to setup a server in order to get the benefits of being able to cache the results, saving "credits" on the Data API.
 
-#### Endpoints
+### Endpoints
 
 ##### `GET /`
 
@@ -137,9 +138,9 @@ To get the results from youtube, first it hits the `search` endpoint with the te
 After that is done, the results are stored in the cache for subsequent requests of the same parameters and the results are returned to the client.
 
 
-#### Client
+### Client
 
-##### Routing
+#### Routing
 
 I wanted to have separate "home" and "results" pages, so I opted to include a client side router.
 
@@ -149,35 +150,35 @@ The home page is a fairly simple grid of videos with a default search.
 
 When a user enters a search term, they're brought to `/results?term=<TERM>` which then displays a list view of the videos with title, description, thumbnail, view count, comment count.
 
-##### Sorting
+#### Sorting
 
 I opted to _**not**_ do any client side sorting of the results because doing that wouldn't exactly be accurate. It would only be sorting the "relevant" results by date/rating rather than actually getting results back from youtube that are sorted on their end.
 
-For example, sorting by `date`` on the client side would only sort the returned relevant results. If we fetch from youtube with the `date` sort, we will actually get the most recently uploaded videos for the term.
+For example, sorting by `date` on the client side would only sort the returned relevant results. If we fetch from youtube with the `date` sort, we will actually get the most recently uploaded videos for the term.
 
 
-### Future improvements
+## Future improvements
 
 There are a lot of things I'd like to improve going forward on this project.
 
-##### Styling
+#### Styling
 
 I'm a huge fan of TailwindCSS, so I'd love to get that working. I found a [video](https://www.youtube.com/watch?v=HwkXCYiRgtE) of someone explaining how to get that setup using [twlit](https://github.com/markjameshoward/twlit)
 
-##### Split out more components
+#### Split out more components
 
 There's room to split some more things out into reusable components. For example, a `video-list-item` and a `video-grid-item`
 
-##### Split the client and server
+#### Split the client and server
 
 Ideally I'd have the client and the server in separate repos and hosted separately. The client app could live on S3 behind a CDN or something, while the server gets deployed to something like EC2 for example.
 
 This would allow for better organization and separation of concerns. And reduce the shared dependencies they currently have.
 
-##### Setup better npm scripts
+#### Setup better npm scripts
 
 Fastify has a cli that could be used to run the dev server and watch for changes.
 
-##### Switch to yarn or pnpm
+#### Switch to yarn or pnpm
 
 I've been wanting to try pnpm. I like the idea of being able to commit deps to the repo without the huge cost that has with npm/yarn, so it'd be fun to test that out.
